@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="397a3602143d404b84f313e924599900" Name="Diagram1">
+        <EntityTypeShape EntityType="PropertyManagementModel.CompanyRecord" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.DistributionExpense" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.ExpensesRecord" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.ExpensesType" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.InvestmentsRecord" Width="1.5" PointX="10.5" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.LoanRecord" Width="1.5" PointX="7.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.MailTemplate" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.OwnerCompanyLink" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.OwnerRecord" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.PaymentRecord" Width="1.5" PointX="9.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.PropertiesRecord" Width="1.5" PointX="5.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.Tenant" Width="1.5" PointX="7.5" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.User" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyManagementModel.UserType" Width="1.5" PointX="8.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="PropertyManagementModel.FK_CompanyRecord_OwnerRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_DistributionExpense_CompanyRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_ExpensesRecord_CompanyRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_LoanRecord_CompanyRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_OwnerCompanyLink_CompanyRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_PropertiesRecord_CompanyRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_DistributionExpense_OwnerRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_ExpensesRecord_ExpensesType" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_InvestmentsRecord_InvestmentsRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_InvestmentsRecord_PropertiesRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_LoanRecord_PropertiesRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_PaymentRecord_LoanRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_OwnerCompanyLink_OwnerRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_Tenant_PropertiesRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="PropertyManagementModel.FK_Users_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

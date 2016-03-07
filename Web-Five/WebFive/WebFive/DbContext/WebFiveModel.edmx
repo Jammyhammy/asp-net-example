@@ -1,0 +1,1923 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PropertyManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CompanyRecord">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManagingMember" Type="bigint" />
+          <Property Name="OperatingAgreement" Type="varbinary(max)" />
+          <Property Name="ArticlesOfOrganization" Type="varbinary(max)" />
+          <Property Name="DateOfIncorporation" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="OperatingAgreementFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticlesOfOrganizationFileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DistributionExpense">
+          <Key>
+            <PropertyRef Name="DistributionExpenseId" />
+          </Key>
+          <Property Name="DistributionExpenseId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" />
+          <Property Name="OwnerId" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DistributionDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpensesRecord">
+          <Key>
+            <PropertyRef Name="ExpensesId" />
+          </Key>
+          <Property Name="ExpensesId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpensesTypeId" Type="bigint" Nullable="false" />
+          <Property Name="ExpensesDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpensesAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ExpensesType">
+          <Key>
+            <PropertyRef Name="ExpensesTypeId" />
+          </Key>
+          <Property Name="ExpensesTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpensesTypes" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvestmentsRecord">
+          <Key>
+            <PropertyRef Name="InvestmentId" />
+          </Key>
+          <Property Name="InvestmentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerId" Type="bigint" Nullable="false" />
+          <Property Name="PropertyId" Type="bigint" />
+          <Property Name="InvestmentAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoanRecord">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="bigint" />
+          <Property Name="LoanAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaturityDate" Type="datetime" />
+          <Property Name="LoanPaymentDueDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PropertyId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="MailTemplateId" />
+          </Key>
+          <Property Name="MailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailTemplateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MailBody" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="MailSubject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OwnerCompanyLink">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="OwnerID" Type="bigint" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="OwnershipPercentage" Type="decimal" Precision="18" Scale="4" />
+        </EntityType>
+        <EntityType Name="OwnerRecord">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="FaxNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriversLicense" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DriversLicenseFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CapRate" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="PaymentRecord">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanId" Type="bigint" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LoanBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropertiesRecord">
+          <Key>
+            <PropertyRef Name="PropertyId" />
+          </Key>
+          <Property Name="PropertyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="PurchaseAgreement" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PurchaseAgreementFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PropertyAssessedValue" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MailAddress" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="LeaseAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LeaseStartDate" Type="datetime" />
+          <Property Name="LeaseMeturityDate" Type="datetime" />
+          <Property Name="LeaseDueDate" Type="datetime" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+          <Property Name="LeaseAgreement" Type="varbinary(max)" />
+          <Property Name="RentEscalation" Type="nvarchar" MaxLength="50" />
+          <Property Name="PropertyId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LeaseAgreementFileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="IsPasswordReset" Type="bit" />
+          <Property Name="IsApproved" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CompanyRecord_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="0..1" />
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="CompanyRecord">
+              <PropertyRef Name="ManagingMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributionExpense_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="DistributionExpense" Type="Self.DistributionExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="DistributionExpense">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributionExpense_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="0..1" />
+          <End Role="DistributionExpense" Type="Self.DistributionExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="DistributionExpense">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="ExpensesRecord" Type="Self.ExpensesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ExpensesRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesRecord_ExpensesType">
+          <End Role="ExpensesType" Type="Self.ExpensesType" Multiplicity="1" />
+          <End Role="ExpensesRecord" Type="Self.ExpensesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpensesType">
+              <PropertyRef Name="ExpensesTypeId" />
+            </Principal>
+            <Dependent Role="ExpensesRecord">
+              <PropertyRef Name="ExpensesTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentsRecord_InvestmentsRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="1" />
+          <End Role="InvestmentsRecord" Type="Self.InvestmentsRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="InvestmentsRecord">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentsRecord_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="0..1" />
+          <End Role="InvestmentsRecord" Type="Self.InvestmentsRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="InvestmentsRecord">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="LoanRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRecord_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="0..1" />
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="LoanRecord">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerCompanyLink_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="1" />
+          <End Role="OwnerCompanyLink" Type="Self.OwnerCompanyLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="OwnerCompanyLink">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerCompanyLink_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="1" />
+          <End Role="OwnerCompanyLink" Type="Self.OwnerCompanyLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="OwnerCompanyLink">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentRecord_LoanRecord">
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="1" />
+          <End Role="PaymentRecord" Type="Self.PaymentRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanRecord">
+              <PropertyRef Name="LoanId" />
+            </Principal>
+            <Dependent Role="PaymentRecord">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropertiesRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="1" />
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="PropertiesRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenant_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="1" />
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="Tenant">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAllLeasePaymentForMainChartForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllLeasePaymentForMainChartForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllLeasePaymentForMainChartForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartLastMonthForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForExpenseChartLastMonthForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartLastMonthForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartLastYearForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForExpenseChartLastYearForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartLastYearForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartThisMonthForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForExpenseChartThisMonthForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseChartThisMonthForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseTableForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForExpenseTableForAdminWithDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseTableForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseTableForCompanyWithDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForExpenseTableForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartLastMonthForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForIncomeChartLastMonthForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartLastMonthForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartLastYearForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForIncomeChartLastYearForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartLastYearForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartThisMonthForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForIncomeChartThisMonthForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeChartThisMonthForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeTableForAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllPropertyInfoForIncomeTableForAdminWithDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeTableForCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeTableForCompanyWithDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyId" Type="bigint" Mode="In" />
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetAllPropertyInfoForIncomeTableForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="PropertyManagementModelStoreContainer">
+          <EntitySet Name="CompanyRecord" EntityType="Self.CompanyRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistributionExpense" EntityType="Self.DistributionExpense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpensesRecord" EntityType="Self.ExpensesRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpensesType" EntityType="Self.ExpensesType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvestmentsRecord" EntityType="Self.InvestmentsRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanRecord" EntityType="Self.LoanRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailTemplate" EntityType="Self.MailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerCompanyLink" EntityType="Self.OwnerCompanyLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnerRecord" EntityType="Self.OwnerRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentRecord" EntityType="Self.PaymentRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropertiesRecord" EntityType="Self.PropertiesRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CompanyRecord_OwnerRecord" Association="Self.FK_CompanyRecord_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecord" />
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributionExpense_CompanyRecord" Association="Self.FK_DistributionExpense_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+            <End Role="DistributionExpense" EntitySet="DistributionExpense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributionExpense_OwnerRecord" Association="Self.FK_DistributionExpense_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecord" />
+            <End Role="DistributionExpense" EntitySet="DistributionExpense" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesRecord_CompanyRecord" Association="Self.FK_ExpensesRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+            <End Role="ExpensesRecord" EntitySet="ExpensesRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesRecord_ExpensesType" Association="Self.FK_ExpensesRecord_ExpensesType">
+            <End Role="ExpensesType" EntitySet="ExpensesType" />
+            <End Role="ExpensesRecord" EntitySet="ExpensesRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentsRecord_InvestmentsRecord" Association="Self.FK_InvestmentsRecord_InvestmentsRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecord" />
+            <End Role="InvestmentsRecord" EntitySet="InvestmentsRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentsRecord_PropertiesRecord" Association="Self.FK_InvestmentsRecord_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecord" />
+            <End Role="InvestmentsRecord" EntitySet="InvestmentsRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRecord_CompanyRecord" Association="Self.FK_LoanRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+            <End Role="LoanRecord" EntitySet="LoanRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRecord_PropertiesRecord" Association="Self.FK_LoanRecord_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecord" />
+            <End Role="LoanRecord" EntitySet="LoanRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerCompanyLink_CompanyRecord" Association="Self.FK_OwnerCompanyLink_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+            <End Role="OwnerCompanyLink" EntitySet="OwnerCompanyLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerCompanyLink_OwnerRecord" Association="Self.FK_OwnerCompanyLink_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecord" />
+            <End Role="OwnerCompanyLink" EntitySet="OwnerCompanyLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentRecord_LoanRecord" Association="Self.FK_PaymentRecord_LoanRecord">
+            <End Role="LoanRecord" EntitySet="LoanRecord" />
+            <End Role="PaymentRecord" EntitySet="PaymentRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropertiesRecord_CompanyRecord" Association="Self.FK_PropertiesRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecord" />
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenant_PropertiesRecord" Association="Self.FK_Tenant_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecord" />
+            <End Role="Tenant" EntitySet="Tenant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users" Association="Self.FK_Users_Users">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PropertyManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyRecord">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TaxId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManagingMember" Type="Int64" />
+          <Property Name="OperatingAgreement" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ArticlesOfOrganization" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DateOfIncorporation" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="OperatingAgreementFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticlesOfOrganizationFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OwnerRecord" Relationship="Self.FK_CompanyRecord_OwnerRecord" FromRole="CompanyRecord" ToRole="OwnerRecord" />
+          <NavigationProperty Name="DistributionExpenses" Relationship="Self.FK_DistributionExpense_CompanyRecord" FromRole="CompanyRecord" ToRole="DistributionExpense" />
+          <NavigationProperty Name="ExpensesRecords" Relationship="Self.FK_ExpensesRecord_CompanyRecord" FromRole="CompanyRecord" ToRole="ExpensesRecord" />
+          <NavigationProperty Name="LoanRecords" Relationship="Self.FK_LoanRecord_CompanyRecord" FromRole="CompanyRecord" ToRole="LoanRecord" />
+          <NavigationProperty Name="OwnerCompanyLinks" Relationship="Self.FK_OwnerCompanyLink_CompanyRecord" FromRole="CompanyRecord" ToRole="OwnerCompanyLink" />
+          <NavigationProperty Name="PropertiesRecords" Relationship="Self.FK_PropertiesRecord_CompanyRecord" FromRole="CompanyRecord" ToRole="PropertiesRecord" />
+        </EntityType>
+        <EntityType Name="DistributionExpense">
+          <Key>
+            <PropertyRef Name="DistributionExpenseId" />
+          </Key>
+          <Property Name="DistributionExpenseId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" />
+          <Property Name="OwnerId" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DistributionDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompanyRecord" Relationship="Self.FK_DistributionExpense_CompanyRecord" FromRole="DistributionExpense" ToRole="CompanyRecord" />
+          <NavigationProperty Name="OwnerRecord" Relationship="Self.FK_DistributionExpense_OwnerRecord" FromRole="DistributionExpense" ToRole="OwnerRecord" />
+        </EntityType>
+        <EntityType Name="ExpensesRecord">
+          <Key>
+            <PropertyRef Name="ExpensesId" />
+          </Key>
+          <Property Name="ExpensesId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpensesTypeId" Type="Int64" Nullable="false" />
+          <Property Name="ExpensesDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpensesAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyId" Type="Int64" />
+          <NavigationProperty Name="CompanyRecord" Relationship="Self.FK_ExpensesRecord_CompanyRecord" FromRole="ExpensesRecord" ToRole="CompanyRecord" />
+          <NavigationProperty Name="ExpensesType" Relationship="Self.FK_ExpensesRecord_ExpensesType" FromRole="ExpensesRecord" ToRole="ExpensesType" />
+        </EntityType>
+        <EntityType Name="ExpensesType">
+          <Key>
+            <PropertyRef Name="ExpensesTypeId" />
+          </Key>
+          <Property Name="ExpensesTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpensesTypes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExpensesRecords" Relationship="Self.FK_ExpensesRecord_ExpensesType" FromRole="ExpensesType" ToRole="ExpensesRecord" />
+        </EntityType>
+        <EntityType Name="InvestmentsRecord">
+          <Key>
+            <PropertyRef Name="InvestmentId" />
+          </Key>
+          <Property Name="InvestmentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerId" Type="Int64" Nullable="false" />
+          <Property Name="PropertyId" Type="Int64" />
+          <Property Name="InvestmentAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OwnerRecord" Relationship="Self.FK_InvestmentsRecord_InvestmentsRecord" FromRole="InvestmentsRecord" ToRole="OwnerRecord" />
+          <NavigationProperty Name="PropertiesRecord" Relationship="Self.FK_InvestmentsRecord_PropertiesRecord" FromRole="InvestmentsRecord" ToRole="PropertiesRecord" />
+        </EntityType>
+        <EntityType Name="LoanRecord">
+          <Key>
+            <PropertyRef Name="LoanId" />
+          </Key>
+          <Property Name="LoanId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Int64" />
+          <Property Name="LoanAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaturityDate" Type="DateTime" Precision="3" />
+          <Property Name="LoanPaymentDueDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PropertyId" Type="Int64" />
+          <NavigationProperty Name="CompanyRecord" Relationship="Self.FK_LoanRecord_CompanyRecord" FromRole="LoanRecord" ToRole="CompanyRecord" />
+          <NavigationProperty Name="PropertiesRecord" Relationship="Self.FK_LoanRecord_PropertiesRecord" FromRole="LoanRecord" ToRole="PropertiesRecord" />
+          <NavigationProperty Name="PaymentRecords" Relationship="Self.FK_PaymentRecord_LoanRecord" FromRole="LoanRecord" ToRole="PaymentRecord" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="MailTemplateId" />
+          </Key>
+          <Property Name="MailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailTemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="MailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OwnerCompanyLink">
+          <Key>
+            <PropertyRef Name="OwnerID" />
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="OwnerID" Type="Int64" Nullable="false" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="OwnershipPercentage" Type="Decimal" Precision="18" Scale="4" />
+          <NavigationProperty Name="CompanyRecord" Relationship="Self.FK_OwnerCompanyLink_CompanyRecord" FromRole="OwnerCompanyLink" ToRole="CompanyRecord" />
+          <NavigationProperty Name="OwnerRecord" Relationship="Self.FK_OwnerCompanyLink_OwnerRecord" FromRole="OwnerCompanyLink" ToRole="OwnerRecord" />
+        </EntityType>
+        <EntityType Name="OwnerRecord">
+          <Key>
+            <PropertyRef Name="OwnerId" />
+          </Key>
+          <Property Name="OwnerId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriversLicense" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DriversLicenseFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CapRate" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="CompanyRecords" Relationship="Self.FK_CompanyRecord_OwnerRecord" FromRole="OwnerRecord" ToRole="CompanyRecord" />
+          <NavigationProperty Name="DistributionExpenses" Relationship="Self.FK_DistributionExpense_OwnerRecord" FromRole="OwnerRecord" ToRole="DistributionExpense" />
+          <NavigationProperty Name="InvestmentsRecords" Relationship="Self.FK_InvestmentsRecord_InvestmentsRecord" FromRole="OwnerRecord" ToRole="InvestmentsRecord" />
+          <NavigationProperty Name="OwnerCompanyLinks" Relationship="Self.FK_OwnerCompanyLink_OwnerRecord" FromRole="OwnerRecord" ToRole="OwnerCompanyLink" />
+        </EntityType>
+        <EntityType Name="PaymentRecord">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanId" Type="Int64" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LoanBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LoanRecord" Relationship="Self.FK_PaymentRecord_LoanRecord" FromRole="PaymentRecord" ToRole="LoanRecord" />
+        </EntityType>
+        <EntityType Name="PropertiesRecord">
+          <Key>
+            <PropertyRef Name="PropertyId" />
+          </Key>
+          <Property Name="PropertyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="PurchaseAgreement" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PurchaseAgreementFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyAssessedValue" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="CompanyRecord" Relationship="Self.FK_PropertiesRecord_CompanyRecord" FromRole="PropertiesRecord" ToRole="CompanyRecord" />
+          <NavigationProperty Name="InvestmentsRecords" Relationship="Self.FK_InvestmentsRecord_PropertiesRecord" FromRole="PropertiesRecord" ToRole="InvestmentsRecord" />
+          <NavigationProperty Name="LoanRecords" Relationship="Self.FK_LoanRecord_PropertiesRecord" FromRole="PropertiesRecord" ToRole="LoanRecord" />
+          <NavigationProperty Name="Tenants" Relationship="Self.FK_Tenant_PropertiesRecord" FromRole="PropertiesRecord" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LeaseAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LeaseStartDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaseMeturityDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaseDueDate" Type="DateTime" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LeaseAgreement" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RentEscalation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LeaseAgreementFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PropertiesRecord" Relationship="Self.FK_Tenant_PropertiesRecord" FromRole="Tenant" ToRole="PropertiesRecord" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="IsPasswordReset" Type="Boolean" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_Users_Users" FromRole="Users" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Users" FromRole="UserType" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_CompanyRecord_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="0..1" />
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="CompanyRecord">
+              <PropertyRef Name="ManagingMember" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributionExpense_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="DistributionExpense" Type="Self.DistributionExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="DistributionExpense">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="ExpensesRecord" Type="Self.ExpensesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ExpensesRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="0..1" />
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="LoanRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerCompanyLink_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="1" />
+          <End Role="OwnerCompanyLink" Type="Self.OwnerCompanyLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="OwnerCompanyLink">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropertiesRecord_CompanyRecord">
+          <End Role="CompanyRecord" Type="Self.CompanyRecord" Multiplicity="1" />
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyRecord">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="PropertiesRecord">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributionExpense_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="0..1" />
+          <End Role="DistributionExpense" Type="Self.DistributionExpense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="DistributionExpense">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpensesRecord_ExpensesType">
+          <End Role="ExpensesType" Type="Self.ExpensesType" Multiplicity="1" />
+          <End Role="ExpensesRecord" Type="Self.ExpensesRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpensesType">
+              <PropertyRef Name="ExpensesTypeId" />
+            </Principal>
+            <Dependent Role="ExpensesRecord">
+              <PropertyRef Name="ExpensesTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentsRecord_InvestmentsRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="1" />
+          <End Role="InvestmentsRecord" Type="Self.InvestmentsRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="InvestmentsRecord">
+              <PropertyRef Name="OwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvestmentsRecord_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="0..1" />
+          <End Role="InvestmentsRecord" Type="Self.InvestmentsRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="InvestmentsRecord">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanRecord_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="0..1" />
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="LoanRecord">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentRecord_LoanRecord">
+          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="1" />
+          <End Role="PaymentRecord" Type="Self.PaymentRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanRecord">
+              <PropertyRef Name="LoanId" />
+            </Principal>
+            <Dependent Role="PaymentRecord">
+              <PropertyRef Name="LoanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnerCompanyLink_OwnerRecord">
+          <End Role="OwnerRecord" Type="Self.OwnerRecord" Multiplicity="1" />
+          <End Role="OwnerCompanyLink" Type="Self.OwnerCompanyLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnerRecord">
+              <PropertyRef Name="OwnerId" />
+            </Principal>
+            <Dependent Role="OwnerCompanyLink">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenant_PropertiesRecord">
+          <End Role="PropertiesRecord" Type="Self.PropertiesRecord" Multiplicity="1" />
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PropertiesRecord">
+              <PropertyRef Name="PropertyId" />
+            </Principal>
+            <Dependent Role="Tenant">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Users">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PropertyManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyRecords" EntityType="Self.CompanyRecord" />
+          <EntitySet Name="DistributionExpenses" EntityType="Self.DistributionExpense" />
+          <EntitySet Name="ExpensesRecords" EntityType="Self.ExpensesRecord" />
+          <EntitySet Name="ExpensesTypes" EntityType="Self.ExpensesType" />
+          <EntitySet Name="InvestmentsRecords" EntityType="Self.InvestmentsRecord" />
+          <EntitySet Name="LoanRecords" EntityType="Self.LoanRecord" />
+          <EntitySet Name="MailTemplates" EntityType="Self.MailTemplate" />
+          <EntitySet Name="OwnerCompanyLinks" EntityType="Self.OwnerCompanyLink" />
+          <EntitySet Name="OwnerRecords" EntityType="Self.OwnerRecord" />
+          <EntitySet Name="PaymentRecords" EntityType="Self.PaymentRecord" />
+          <EntitySet Name="PropertiesRecords" EntityType="Self.PropertiesRecord" />
+          <EntitySet Name="Tenants" EntityType="Self.Tenant" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_CompanyRecord_OwnerRecord" Association="Self.FK_CompanyRecord_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecords" />
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributionExpense_CompanyRecord" Association="Self.FK_DistributionExpense_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+            <End Role="DistributionExpense" EntitySet="DistributionExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesRecord_CompanyRecord" Association="Self.FK_ExpensesRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+            <End Role="ExpensesRecord" EntitySet="ExpensesRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRecord_CompanyRecord" Association="Self.FK_LoanRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+            <End Role="LoanRecord" EntitySet="LoanRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerCompanyLink_CompanyRecord" Association="Self.FK_OwnerCompanyLink_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+            <End Role="OwnerCompanyLink" EntitySet="OwnerCompanyLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PropertiesRecord_CompanyRecord" Association="Self.FK_PropertiesRecord_CompanyRecord">
+            <End Role="CompanyRecord" EntitySet="CompanyRecords" />
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributionExpense_OwnerRecord" Association="Self.FK_DistributionExpense_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecords" />
+            <End Role="DistributionExpense" EntitySet="DistributionExpenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpensesRecord_ExpensesType" Association="Self.FK_ExpensesRecord_ExpensesType">
+            <End Role="ExpensesType" EntitySet="ExpensesTypes" />
+            <End Role="ExpensesRecord" EntitySet="ExpensesRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentsRecord_InvestmentsRecord" Association="Self.FK_InvestmentsRecord_InvestmentsRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecords" />
+            <End Role="InvestmentsRecord" EntitySet="InvestmentsRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvestmentsRecord_PropertiesRecord" Association="Self.FK_InvestmentsRecord_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecords" />
+            <End Role="InvestmentsRecord" EntitySet="InvestmentsRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRecord_PropertiesRecord" Association="Self.FK_LoanRecord_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecords" />
+            <End Role="LoanRecord" EntitySet="LoanRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentRecord_LoanRecord" Association="Self.FK_PaymentRecord_LoanRecord">
+            <End Role="LoanRecord" EntitySet="LoanRecords" />
+            <End Role="PaymentRecord" EntitySet="PaymentRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnerCompanyLink_OwnerRecord" Association="Self.FK_OwnerCompanyLink_OwnerRecord">
+            <End Role="OwnerRecord" EntitySet="OwnerRecords" />
+            <End Role="OwnerCompanyLink" EntitySet="OwnerCompanyLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenant_PropertiesRecord" Association="Self.FK_Tenant_PropertiesRecord">
+            <End Role="PropertiesRecord" EntitySet="PropertiesRecords" />
+            <End Role="Tenant" EntitySet="Tenants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Users" Association="Self.FK_Users_Users">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllLeasePaymentForMainChartForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllLeasePaymentForMainChartForAdmin_Result)" />
+          <FunctionImport Name="GetAllLeasePaymentForMainChartForCompany" ReturnType="Collection(PropertyManagementModel.GetAllLeasePaymentForMainChartForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserId" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllLeasePaymentForMainChartForUser" ReturnType="Collection(PropertyManagementModel.GetAllLeasePaymentForMainChartForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastMonthForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastMonthForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastMonthForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastYearForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastYearForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartLastYearForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartThisMonthForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartThisMonthForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseChartThisMonthForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseTableForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseTableForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForExpenseTableForAdminWithDateRange" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseTableForAdminWithDateRange_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseTableForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseTableForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseTableForCompanyWithDateRange" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseTableForCompanyWithDateRange_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForExpenseTableForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForExpenseTableForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastMonthForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastMonthForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastMonthForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastYearForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastYearForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartLastYearForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartThisMonthForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartThisMonthForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeChartThisMonthForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeTableForAdmin" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeTableForAdmin_Result)" />
+          <FunctionImport Name="GetAllPropertyInfoForIncomeTableForAdminWithDateRange" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeTableForAdminWithDateRange_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeTableForCompany" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeTableForCompany_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeTableForCompanyWithDateRange" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeTableForCompanyWithDateRange_Result)">
+            <Parameter Name="CompanyId" Mode="In" Type="Int64" />
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetAllPropertyInfoForIncomeTableForUser" ReturnType="Collection(PropertyManagementModel.GetAllPropertyInfoForIncomeTableForUser_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int64" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetAllLeasePaymentForMainChartForAdmin_Result">
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Expense" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllLeasePaymentForMainChartForCompany_Result">
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Expense" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllLeasePaymentForMainChartForUser_Result">
+          <Property Type="Int32" Name="Year" Nullable="true" />
+          <Property Type="Int32" Name="Month" Nullable="true" />
+          <Property Type="Decimal" Name="Income" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Expense" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastMonthForAdmin_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastMonthForCompany_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastMonthForUser_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastYearForAdmin_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastYearForCompany_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartLastYearForUser_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartThisMonthForAdmin_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartThisMonthForCompany_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseChartThisMonthForUser_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseTableForAdmin_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseTableForAdminWithDateRange_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseTableForCompany_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseTableForCompanyWithDateRange_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForExpenseTableForUser_Result">
+          <Property Type="String" Name="Account" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Bank" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="PaymentDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="LoanPayment" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastMonthForAdmin_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastMonthForCompany_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastMonthForUser_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastYearForAdmin_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastYearForCompany_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartLastYearForUser_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartThisMonthForAdmin_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartThisMonthForCompany_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeChartThisMonthForUser_Result">
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeTableForAdmin_Result">
+          <Property Type="Int64" Name="PropertyId" Nullable="false" />
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tenants" Nullable="true" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeTableForAdminWithDateRange_Result">
+          <Property Type="Int64" Name="PropertyId" Nullable="false" />
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tenants" Nullable="true" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeTableForCompany_Result">
+          <Property Type="Int64" Name="PropertyId" Nullable="false" />
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tenants" Nullable="true" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeTableForCompanyWithDateRange_Result">
+          <Property Type="Int64" Name="PropertyId" Nullable="false" />
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tenants" Nullable="true" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="GetAllPropertyInfoForIncomeTableForUser_Result">
+          <Property Type="Int64" Name="PropertyId" Nullable="false" />
+          <Property Type="String" Name="PropertyAddress" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Tenants" Nullable="true" />
+          <Property Type="Decimal" Name="RentalIncome" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PropertyManagementModelStoreContainer" CdmEntityContainer="PropertyManagementEntities">
+          <EntitySetMapping Name="CompanyRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.CompanyRecord">
+              <MappingFragment StoreEntitySet="CompanyRecord">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="ManagingMember" ColumnName="ManagingMember" />
+                <ScalarProperty Name="OperatingAgreement" ColumnName="OperatingAgreement" />
+                <ScalarProperty Name="ArticlesOfOrganization" ColumnName="ArticlesOfOrganization" />
+                <ScalarProperty Name="DateOfIncorporation" ColumnName="DateOfIncorporation" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OperatingAgreementFileName" ColumnName="OperatingAgreementFileName" />
+                <ScalarProperty Name="ArticlesOfOrganizationFileName" ColumnName="ArticlesOfOrganizationFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistributionExpenses">
+            <EntityTypeMapping TypeName="PropertyManagementModel.DistributionExpense">
+              <MappingFragment StoreEntitySet="DistributionExpense">
+                <ScalarProperty Name="DistributionExpenseId" ColumnName="DistributionExpenseId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DistributionDate" ColumnName="DistributionDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpensesRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.ExpensesRecord">
+              <MappingFragment StoreEntitySet="ExpensesRecord">
+                <ScalarProperty Name="ExpensesId" ColumnName="ExpensesId" />
+                <ScalarProperty Name="ExpensesTypeId" ColumnName="ExpensesTypeId" />
+                <ScalarProperty Name="ExpensesDate" ColumnName="ExpensesDate" />
+                <ScalarProperty Name="ExpensesAmount" ColumnName="ExpensesAmount" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpensesTypes">
+            <EntityTypeMapping TypeName="PropertyManagementModel.ExpensesType">
+              <MappingFragment StoreEntitySet="ExpensesType">
+                <ScalarProperty Name="ExpensesTypeId" ColumnName="ExpensesTypeId" />
+                <ScalarProperty Name="ExpensesTypes" ColumnName="ExpensesTypes" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvestmentsRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.InvestmentsRecord">
+              <MappingFragment StoreEntitySet="InvestmentsRecord">
+                <ScalarProperty Name="InvestmentId" ColumnName="InvestmentId" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="InvestmentAmount" ColumnName="InvestmentAmount" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.LoanRecord">
+              <MappingFragment StoreEntitySet="LoanRecord">
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="LoanAmount" ColumnName="LoanAmount" />
+                <ScalarProperty Name="MaturityDate" ColumnName="MaturityDate" />
+                <ScalarProperty Name="LoanPaymentDueDate" ColumnName="LoanPaymentDueDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplates">
+            <EntityTypeMapping TypeName="PropertyManagementModel.MailTemplate">
+              <MappingFragment StoreEntitySet="MailTemplate">
+                <ScalarProperty Name="MailTemplateId" ColumnName="MailTemplateId" />
+                <ScalarProperty Name="MailTemplateName" ColumnName="MailTemplateName" />
+                <ScalarProperty Name="MailBody" ColumnName="MailBody" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerCompanyLinks">
+            <EntityTypeMapping TypeName="PropertyManagementModel.OwnerCompanyLink">
+              <MappingFragment StoreEntitySet="OwnerCompanyLink">
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="OwnershipPercentage" ColumnName="OwnershipPercentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnerRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.OwnerRecord">
+              <MappingFragment StoreEntitySet="OwnerRecord">
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DriversLicense" ColumnName="DriversLicense" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DriversLicenseFileName" ColumnName="DriversLicenseFileName" />
+                <ScalarProperty Name="CapRate" ColumnName="CapRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.PaymentRecord">
+              <MappingFragment StoreEntitySet="PaymentRecord">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="LoanId" ColumnName="LoanId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="LoanBalance" ColumnName="LoanBalance" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertiesRecords">
+            <EntityTypeMapping TypeName="PropertyManagementModel.PropertiesRecord">
+              <MappingFragment StoreEntitySet="PropertiesRecord">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="PurchaseAgreement" ColumnName="PurchaseAgreement" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PurchaseAgreementFileName" ColumnName="PurchaseAgreementFileName" />
+                <ScalarProperty Name="PropertyAssessedValue" ColumnName="PropertyAssessedValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenants">
+            <EntityTypeMapping TypeName="PropertyManagementModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LeaseAmount" ColumnName="LeaseAmount" />
+                <ScalarProperty Name="LeaseStartDate" ColumnName="LeaseStartDate" />
+                <ScalarProperty Name="LeaseMeturityDate" ColumnName="LeaseMeturityDate" />
+                <ScalarProperty Name="LeaseDueDate" ColumnName="LeaseDueDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="LeaseAgreement" ColumnName="LeaseAgreement" />
+                <ScalarProperty Name="RentEscalation" ColumnName="RentEscalation" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LeaseAgreementFileName" ColumnName="LeaseAgreementFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PropertyManagementModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="IsPasswordReset" ColumnName="IsPasswordReset" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="PropertyManagementModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLeasePaymentForMainChartForAdmin" FunctionName="PropertyManagementModel.Store.GetAllLeasePaymentForMainChartForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllLeasePaymentForMainChartForAdmin_Result">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Expense" ColumnName="Expense" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLeasePaymentForMainChartForCompany" FunctionName="PropertyManagementModel.Store.GetAllLeasePaymentForMainChartForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllLeasePaymentForMainChartForCompany_Result">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Expense" ColumnName="Expense" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllLeasePaymentForMainChartForUser" FunctionName="PropertyManagementModel.Store.GetAllLeasePaymentForMainChartForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllLeasePaymentForMainChartForUser_Result">
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Expense" ColumnName="Expense" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastMonthForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastMonthForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForAdmin_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastMonthForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastMonthForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForCompany_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastMonthForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastMonthForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastMonthForUser_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastYearForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastYearForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForAdmin_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastYearForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastYearForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForCompany_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartLastYearForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartLastYearForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartLastYearForUser_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartThisMonthForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartThisMonthForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForAdmin_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartThisMonthForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartThisMonthForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForCompany_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseChartThisMonthForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseChartThisMonthForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseChartThisMonthForUser_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseTableForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseTableForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseTableForAdmin_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseTableForAdminWithDateRange" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseTableForAdminWithDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseTableForAdminWithDateRange_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseTableForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseTableForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseTableForCompany_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseTableForCompanyWithDateRange" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseTableForCompanyWithDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseTableForCompanyWithDateRange_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForExpenseTableForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForExpenseTableForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForExpenseTableForUser_Result">
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="LoanPayment" ColumnName="LoanPayment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastMonthForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastMonthForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForAdmin_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastMonthForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastMonthForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForCompany_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastMonthForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastMonthForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastMonthForUser_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastYearForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastYearForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForAdmin_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastYearForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastYearForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForCompany_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartLastYearForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartLastYearForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartLastYearForUser_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartThisMonthForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartThisMonthForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForAdmin_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartThisMonthForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartThisMonthForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForCompany_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeChartThisMonthForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeChartThisMonthForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeChartThisMonthForUser_Result">
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeTableForAdmin" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeTableForAdmin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeTableForAdmin_Result">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tenants" ColumnName="Tenants" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeTableForAdminWithDateRange" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeTableForAdminWithDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeTableForAdminWithDateRange_Result">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tenants" ColumnName="Tenants" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeTableForCompany" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeTableForCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeTableForCompany_Result">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tenants" ColumnName="Tenants" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeTableForCompanyWithDateRange" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeTableForCompanyWithDateRange">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeTableForCompanyWithDateRange_Result">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tenants" ColumnName="Tenants" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAllPropertyInfoForIncomeTableForUser" FunctionName="PropertyManagementModel.Store.GetAllPropertyInfoForIncomeTableForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyManagementModel.GetAllPropertyInfoForIncomeTableForUser_Result">
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+                <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tenants" ColumnName="Tenants" />
+                <ScalarProperty Name="RentalIncome" ColumnName="RentalIncome" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
