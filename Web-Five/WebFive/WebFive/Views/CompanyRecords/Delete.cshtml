@@ -1,0 +1,128 @@
+﻿@model WebFive.Models.Data.CompanyRecord
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CompanyRecord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaxId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingAgreement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingAgreement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticlesOfOrganization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticlesOfOrganization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfIncorporation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfIncorporation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatingAgreementFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatingAgreementFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArticlesOfOrganizationFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticlesOfOrganizationFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerRecord.OwnerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerRecord.OwnerName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -8,12 +8,12 @@ using WebFive.Models.Reports;
 
 namespace WebFive.Models
 {
-    public abstract class BaseReportModel
+    public abstract class BaseReportModelView
     {
         /// <summary>
         /// Gets and sets date radnge of report
         /// </summary>
         [DateRangeValidator]
-        public DateRangeModel DateRange { get; set; }
+        public DateRangeModelView DateRange { get; set; }
     }
 }

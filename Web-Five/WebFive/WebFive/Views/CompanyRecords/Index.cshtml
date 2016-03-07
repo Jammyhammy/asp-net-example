@@ -1,0 +1,105 @@
+﻿@model IEnumerable<WebFive.Models.Data.CompanyRecord>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaxId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingAgreement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticlesOfOrganization)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfIncorporation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatingAgreementFileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArticlesOfOrganizationFileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerRecord.OwnerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaxId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatingAgreement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticlesOfOrganization)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfIncorporation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatingAgreementFileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticlesOfOrganizationFileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerRecord.OwnerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CompanyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CompanyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CompanyId })
+        </td>
+    </tr>
+}
+
+</table>
